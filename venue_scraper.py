@@ -11,7 +11,7 @@ class VenueSpider(scrapy.Spider):
     headers = {
         'user-agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
     }
-    
+
     custom_settings = {
         'CONCURRENT_REQUESTS_PER_DOMAIN': 2,
         'DOWNLOAD_DELAY': 1,
@@ -37,7 +37,7 @@ class VenueSpider(scrapy.Spider):
       new_each_detailed_page_link = each_detailed_page_link[:36].copy()
       for link in new_each_detailed_page_link:
         new_link = 'https://www.wedding-spot.com' + link.xpath('@href').get()  
-        
+
         if new_link:
           yield scrapy.Request(
             new_link,
@@ -68,23 +68,26 @@ class VenueSpider(scrapy.Spider):
       SJsonBlob = response.css('script[type="application/ld+json"]::text').get()
       jsonBlob = json.loads(SJsonBlob)
       # highlights = self.parse_venue_h()
-      phone = int(''.join(jsonBlob.get('telephone','').split('-')))
-      capacity = int(jsonBlob.get('maximumAttendeeCapacity',''))
-      address = jsonBlob.get('address')
-      a = []
-      a.append(address.get("streetAddress",''))
-      a.append(address.get( "addressLocality",''))
-      a.append(address.get("addressRegion",''))
-      location = ",".join(a)
+      phone = jsonBlob.get('telephone', '')
+      numeric_phone = ''.join(filter(str.isdigit, phone.split(' ')[0])) if phone else 'nan'
 
-      
+      capacity = jsonBlob.get('maximumAttendeeCapacity', 'nan')
+      address = jsonBlob.get('address', {})
+      a = [
+          address.get("streetAddress", ''),
+          address.get("addressLocality", ''),
+          address.get("addressRegion", '')
+      ]
+      location = ",".join([e for e in a if e])
+
+
       loader.add_value('Url', jsonBlob.get('url'))
       loader.add_value('venue_name', jsonBlob.get('name'))
-      loader.add_value('phone',phone)
+      loader.add_value('phone', numeric_phone)
       loader.add_value('highlights', 'nan')
       loader.add_value('capacity', capacity)
-      loader.add_css('location', location)
-    
+      loader.add_value('location', location)
+
       yield loader.load_item()
 
 
