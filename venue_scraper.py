@@ -49,7 +49,7 @@ class VenueSpider(scrapy.Spider):
             callback=self.parse_venue_h
           )
 
-    def parse_venue_h(self):
+    def parse_venue_h(self, response):
       new_link = response.meta.get('new_link')
       id = int(response.meta.get('new_link').split('/')[6])
       api = f'https://www.wedding-spot.com/api/v1/vendors-full/{id}/'
