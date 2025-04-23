@@ -1,0 +1,47 @@
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/utils/defer.py", line 327, in iter_errback
+    yield next(it)
+          ^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 368, in __next__
+    return next(self.data)
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 368, in __next__
+    return next(self.data)
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 106, in process_sync
+    yield from iterable
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/referer.py", line 379, in <genexpr>
+    return (self._set_referer(r, response) for r in result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 106, in process_sync
+    yield from iterable
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/urllength.py", line 57, in <genexpr>
+    return (r for r in result if self._filter(r, spider))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 106, in process_sync
+    yield from iterable
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/depth.py", line 54, in <genexpr>
+    return (r for r in result if self._filter(r, response, spider))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 106, in process_sync
+    yield from iterable
+  File "/home/runner/workspace/venue_scraper.py", line 51, in parse_detailed_page
+    loader.add_xpath('Url', response.meta.get('new_link'))
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/itemloaders/__init__.py", line 421, in add_xpath
+    values = self._get_xpathvalues(xpath, **kw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/itemloaders/__init__.py", line 478, in _get_xpathvalues
+    return flatten(self.selector.xpath(xpath, **kw).getall() for xpath in xpaths)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/parsel/utils.py", line 22, in flatten
+    return list(iflatten(x))
+           ^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/parsel/utils.py", line 28, in iflatten
+    for el in x:
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/itemloaders/__init__.py", line 478, in <genexpr>
+    return flatten(self.selector.xpath(xpath, **kw).getall() for xpath in xpaths)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/venv/lib/python3.11/site-packages/parsel/selector.py", line 626, in xpath
+    raise ValueError(f"XPath error: {exc} in {query}")
+ValueError: XPath error: Invalid expression in https://www.wedding-spot.com/venue/9968/bridgehampton-tennis-surf-club/
