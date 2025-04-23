@@ -46,28 +46,28 @@ class VenueSpider(scrapy.Spider):
     'current_page': response.meta.get('current_page'),
     'base_url': response.meta.get('base_url'),
     'new_link': new_link },
-            callback=self.parse_venue_h
+            callback=self.parse_detailed_page
           )
 
-    def parse_venue_h(self, response):
-      new_link = response.meta.get('new_link')
-      id = int(response.meta.get('new_link').split('/')[6])
-      api = f'https://www.wedding-spot.com/api/v1/vendors-full/{id}/'
-      response = scrapy.Request(api,headers=self.headers)
-      jsont = json.loads(response.body) 
-      h = []
-      b = jsont.get('content').get('venue_highlights')
-      for i in b:
-        label = i.get('label')
-        h.append(label)
-      highlight = ','.join(h)
-      return highlight
+    # def parse_venue_h(self, response):
+    #   new_link = response.meta.get('new_link')
+    #   id = int(response.meta.get('new_link').split('/')[6])
+    #   api = f'https://www.wedding-spot.com/api/v1/vendors-full/{id}/'
+    #   response = scrapy.Request(api,headers=self.headers)
+    #   jsont = json.loads(response.body) 
+    #   h = []
+    #   b = jsont.get('content').get('venue_highlights')
+    #   for i in b:
+    #     label = i.get('label')
+    #     h.append(label)
+    #   highlight = ','.join(h)
+    #   return highlight
 
     def parse_detailed_page(self, response): 
       loader = ItemLoader(item=VenueItem(), response=response)
       SJsonBlob = response.css('script[type="application/ld+json"]::text').get()
       jsonBlob = json.loads(SJsonBlob)
-      highlights = self.parse_venue_h()
+      # highlights = self.parse_venue_h()
       phone = int(''.join(jsonBlob.get('telephone','').split('-')))
       capacity = int(jsonBlob.get('maximumAttendeeCapacity',''))
       address = jsonBlob.get('address')
@@ -81,7 +81,7 @@ class VenueSpider(scrapy.Spider):
       loader.add_value('Url', jsonBlob.get('url'))
       loader.add_value('venue_name', jsonBlob.get('name'))
       loader.add_value('phone',phone)
-      loader.add_value('highlights', highlights)
+      loader.add_value('highlights', 'nan')
       loader.add_value('capacity', capacity)
       loader.add_css('location', location)
     
