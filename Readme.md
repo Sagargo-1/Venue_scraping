@@ -12,7 +12,7 @@
   <div style="text-align: center;">
     <img src="https://scrapy.org/img/scrapylogo.png" width="120">
     <div style="margin-top: 10px; font-family: 'Segoe UI', sans-serif; font-size: 1rem; color: #2C504E; font-weight: 600;">
-      <code>Scrapy Framework atest Version</code>
+      <code>Scrapy Framework latest Version</code>
     </div>
   </div>
 </div>
