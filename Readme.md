@@ -153,7 +153,7 @@ class VenueSpider(scrapy.Spider):
 
 
 # 🕸️ Troubleshooting
-<p style="font-size: 2em; color: #666;">If you are any hitting Error . try these command in your 
+<p style="font-size: 2em; color: #666;">If you are hitting any Error . try these command in your 
 <code>cmd</code> or <code>bash</code> to troubleshoot it.</p>
 
 ```bash
