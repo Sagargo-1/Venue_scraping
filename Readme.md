@@ -1,9 +1,21 @@
 # 🕷️ Wedding Venue Scraper Documentation 
 
-**Compatibility:**  
-<img src="https://img.shields.io/static/v1?label=Python&message=3.8%2B&color=blue&logo=python" width="120">
-<img src="https://img.shields.io/static/v1?label=Scrapy&message=2.8%2B&color=orange" width="120">
-<img src="https://img.shields.io/static/v1?label=License&message=MIT&color=green" width="100">
+**Compatibility Section :**  
+<div style="display: flex; gap: 40px; align-items: center; padding: 20px; background: #f8f9fa; border-radius: 8px; flex-wrap: wrap;">
+  <div style="text-align: center;">
+    <img src="https://www.python.org/static/img/python-logo.png" width="120">
+    <div style="margin-top: 10px; font-family: 'Segoe UI', sans-serif; font-size: 1rem; color: #306998; font-weight: 600;">
+      <code>Python 3.8+</code>
+    </div>
+  </div>
+    <br>   
+  <div style="text-align: center;">
+    <img src="https://scrapy.org/img/scrapylogo.png" width="120">
+    <div style="margin-top: 10px; font-family: 'Segoe UI', sans-serif; font-size: 1rem; color: #2C504E; font-weight: 600;">
+      <code>Scrapy Framework atest Version</code>
+    </div>
+  </div>
+</div>
 
 ## 🚀 Quick Start
 
