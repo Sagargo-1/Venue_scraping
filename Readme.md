@@ -21,8 +21,7 @@
 
 ### Clone, Install & Run the Spider
 ```bash
-
-git clone https://github.com/yourusername/wedding-venue-scraper.git
+[git clone https://github.com/Sagargo-1/Venue_scraping.git
 ```
 ```bash
 pip install scrapy
