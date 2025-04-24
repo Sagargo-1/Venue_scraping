@@ -163,9 +163,7 @@ scrapy runspider venue_scraper.py --loglevel=DEBUG
 # Disable cache
 scrapy runspider venue_scraper.py -s HTTPCACHE_ENABLED=0
 ```
-# 📜 License
-### MIT License - Full License Text - LICENSE.txt
-    
+ 
 # 🎉 Conclusion
 
 **Wedding Venue Scraper** offers a production-ready solution for efficiently harvesting structured venue data while maintaining web-crawling best practices. With its modular architecture and built-in throttling mechanisms, the spider balances performance with website respect through:
