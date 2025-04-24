@@ -1,5 +1,6 @@
 {pkgs} : {
   deps = [
+    pkgs.emacsclient-commands
     pkgs.python-launcher
     pkgs.playwright-driver
     pkgs.gitFull
